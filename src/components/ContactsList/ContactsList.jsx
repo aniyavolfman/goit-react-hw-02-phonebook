@@ -1,5 +1,5 @@
 import { ContactListItem } from 'components/ContactListItem/ContactListItem';
-import Proptypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 export function ContactsList({ contacts }) {
   return (
@@ -11,3 +11,14 @@ export function ContactsList({ contacts }) {
     </ul>
   );
 }
+
+ContactsList.propTypes = {
+  contacts: PropTypes.arrayOf(
+    PropTypes.exact({
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      number: PropTypes.string.isRequired,
+    })
+  ),
+};
+
