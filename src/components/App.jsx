@@ -42,9 +42,20 @@ export class App extends Component {
     });
   };
 
+  handleDelete = event => {
+    this.setState(prevState => ({
+      contacts: prevState.contacts.filter(
+        el => el.id !== event.target.id
+      ),
+    }));
+  };
+
   render() {
     const filteredContacts = this.state.contacts.filter(contact =>
-      contact.name.toLowerCase().trim().includes(this.state.filter.toLowerCase())
+      contact.name
+        .toLowerCase()
+        .trim()
+        .includes(this.state.filter.toLowerCase())
     );
 
     return (
@@ -53,7 +64,10 @@ export class App extends Component {
         <Form onSubmit={this.addContact} />
         <h2>Contacts</h2>
         <Filter value={this.state.filter} onFilterChange={this.handleFilter} />
-        <ContactsList contacts={filteredContacts} />
+        <ContactsList
+          contacts={filteredContacts}
+          onButtonDelete={this.handleDelete}
+        />
       </Container>
     );
   }

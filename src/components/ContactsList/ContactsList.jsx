@@ -1,13 +1,18 @@
 import { ContactListItem } from 'components/ContactListItem/ContactListItem';
 import PropTypes from 'prop-types';
 
-export function ContactsList({ contacts }) {
+export function ContactsList({ contacts, onButtonDelete }) {
   return (
     <ul>
-          {contacts.map(({id, name, number}) => (
-            <ContactListItem key={id} name={name} number={number} />
-      )
-      )}
+      {contacts.map(({ id, name, number }) => (
+        <ContactListItem
+          key={id}
+          name={name}
+          number={number}
+          onButtonDelete={onButtonDelete}
+          buttonId={id}
+        />
+      ))}
     </ul>
   );
 }
