@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import css from './Form.module.css'
 
 export class Form extends Component {
   state = {
@@ -32,9 +33,9 @@ export class Form extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form onSubmit={this.handleSubmit} className={css.formContact}>
         <label>
-          Name
+          <div>Name</div>
           <input
             type="text"
             name="name"
@@ -46,7 +47,7 @@ export class Form extends Component {
           />
         </label>
         <label>
-          Number
+          <div>Number</div>
           <input
             type="tel"
             name="number"
@@ -58,7 +59,7 @@ export class Form extends Component {
           />
         </label>
 
-        <button type="submit">Add contact</button>
+        <button type="submit" className={css.buttonSubmit}>Add contact</button>
       </form>
     );
   }
